@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="https://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="index.js" defer></script>
+    <link rel="stylesheet" href="/index.css" />
+    <title>diary</title>
+  </head>
+  <body>
+    <h1>Diary</h1>
+    <form id="date-search">
+      <label for="start-date">Från: </label>
+      <input type="date" id="start-date" />
+      <label for="end-date">Till: </label>
+      <input type="date" id="end-date" />
+    </form>
+    <form
+      method="post"
+      th:action="@{/new-post}"
+      th:objekt="${Diary}"
+      th:id="newPost"
+    >
+      <label for="add-post-tital">tital: </label>
+      <input type="text" id="add-post-tital" name="addPostTital" />
+      <label for="add-post-text">inlägg: </label>
+      <input type="text" id="add-post-text" name="addPostText" />
+      <label for="post-date">publiceringsdatum: </label>
+      <input type="date" id="post-date" name="AddPostDate" required />
+      <button>Submit</button>
+    </form>
+    <ul>
+      <li
+        class="posts"
+        th:each="diaryPost : ${diaryPosts}"
+        th:attr="data-date=${diaryPost.date}"
+      >
+        <div class="content">
+          <span th:text="${diaryPost.tital}"></span>
+          <span TH:text="${diaryPost.post}"></span>
+          <span th:text="${diaryPost.date}"></span>
+        </div>
+        <div class="dropdown">
+          <button class="dropbtn">Dropdown</button>
+          <div class="drop-down-item">
+            <a th:href="@{/delete-diary-post(id=${diaryPost.id})}">Ta bort</a>
+            <a href="#">Ändra</a>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </body>
+</html>
