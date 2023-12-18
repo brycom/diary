@@ -22,7 +22,7 @@
       <textarea
         name="addPostText"
         id="add-post-text"
-        cols="70"
+        cols="79"
         rows="10"
       ></textarea>
 
@@ -51,9 +51,15 @@
         </div>
         <div class="dropdown">
           <button class="dropbtn">Dropdown</button>
-          <div class="drop-down-item">
-            <a th:href="@{/delete-diary-post(id=${diaryPost.id})}">Ta bort</a>
-            <a href="#">Ändra</a>
+          <div class="drop-down-items">
+            <a
+              class="drop-down-item"
+              th:href="@{/delete-diary-post(id=${diaryPost.id})}"
+              >Ta bort</a
+            >
+            <a href="" class="drop-down-item editBtn" th:id="${diaryPost.id}">
+              Ändra</a
+            >
           </div>
         </div>
       </li>
