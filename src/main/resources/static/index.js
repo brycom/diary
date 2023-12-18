@@ -1,7 +1,9 @@
 let posts = document.getElementsByClassName("posts");
+let newPostBtn = document.getElementById("new-form-btn");
+let newPost = document.getElementById("newPost");
+let today = new Date();
 
 function checkPostDate() {
-  let today = new Date();
   for (let i = 0; i < posts.length; i++) {
     let post = posts[i];
     let dateStr = post.getAttribute("data-date");
@@ -21,5 +23,17 @@ function checkPostDate() {
     }
   }
 }
+function showNewPost() {
+  if (newPost.style.display == "block") {
+    newPost.style.display = "none";
+  } else {
+    newPost.style.display = "block";
+  }
+}
+
+document.getElementById("post-date").defaultValue = today
+  .toISOString()
+  .split("T")[0];
+newPostBtn.addEventListener("click", showNewPost);
 
 checkPostDate();

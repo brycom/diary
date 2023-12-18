@@ -1,11 +1,50 @@
 body {
   background-color: rgb(255, 255, 255);
 }
-
-.posts {
+ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
   align-items: center;
+}
+
+li {
+  width: 100%;
+  max-width: 80%;
+  margin: 10px;
+  padding: 10px;
+}
+#newPost {
+  display: none;
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #85858548;
+}
+
+label {
   display: block;
-  margin-left: 20%;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+#newPost input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+#newPost button {
+  background-color: #4c6baf;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  margin-left: 10px;
+  font-weight: 600;
 }
 
 .content {
@@ -27,14 +66,15 @@ body {
 .dropdown {
   position: relative;
   display: inline-block;
+  margin-top: -50px;
 }
 .drop-down-item {
   display: none;
   position: absolute;
-  background-color: #53505098;
+  background-color: #9c9a9a98;
   min-width: 160px;
-
   z-index: 1;
+  border-radius: 5px;
 }
 .drop-down-item a {
   color: black;
@@ -43,14 +83,18 @@ body {
   display: block;
 }
 .dropbtn {
-  background-color: rgba(0, 0, 0, 0.281);
+  background-color: #4c6baf;
+  color: #fff;
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
+  margin-left: 10px;
+  font-weight: 600;
 }
 
 .drop-down-item a:hover {
   background-color: #ddd;
+  border-radius: 5px;
 }
 
 .dropdown:hover .drop-down-item {
@@ -58,6 +102,46 @@ body {
 }
 
 .dropdown:hover .dropbtn {
-  background-color: #414b4134;
+  background-color: #4c6bafcc;
   border: none;
+}
+#date-search {
+  display: block;
+  margin-left: 20px;
+  margin-top: 40px;
+}
+#date-search input {
+  width: 15%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+h1 {
+  font-family: "Arial", sans-serif;
+  color: #333;
+}
+#new-form-btn {
+  margin-left: 45%;
+  background-color: #4c6baf;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+}
+#new-form-btn:active {
+  margin-top: 2px;
+  background-color: #4c6baf91;
+}
+.tital {
+  font-weight: 600;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-bottom: 20px;
+}
+.date {
+  margin-top: 20px;
+  margin-bottom: -25px;
+  font-weight: 500;
 }

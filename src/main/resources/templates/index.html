@@ -9,12 +9,7 @@
   </head>
   <body>
     <h1>Diary</h1>
-    <form id="date-search">
-      <label for="start-date">Från: </label>
-      <input type="date" id="start-date" />
-      <label for="end-date">Till: </label>
-      <input type="date" id="end-date" />
-    </form>
+    <button id="new-form-btn">skapa inlägg</button>
     <form
       method="post"
       th:action="@{/new-post}"
@@ -24,21 +19,35 @@
       <label for="add-post-tital">tital: </label>
       <input type="text" id="add-post-tital" name="addPostTital" />
       <label for="add-post-text">inlägg: </label>
-      <input type="text" id="add-post-text" name="addPostText" />
+      <textarea
+        name="addPostText"
+        id="add-post-text"
+        cols="70"
+        rows="10"
+      ></textarea>
+
       <label for="post-date">publiceringsdatum: </label>
       <input type="date" id="post-date" name="AddPostDate" required />
       <button>Submit</button>
     </form>
     <ul>
+      <li>
+        <form id="date-search">
+          <label for="start-date">Från: </label>
+          <input type="date" id="start-date" />
+          <label for="end-date">Till: </label>
+          <input type="date" id="end-date" />
+        </form>
+      </li>
       <li
         class="posts"
         th:each="diaryPost : ${diaryPosts}"
         th:attr="data-date=${diaryPost.date}"
       >
         <div class="content">
-          <span th:text="${diaryPost.tital}"></span>
+          <span class="tital" th:text="${diaryPost.tital}"></span>
           <span TH:text="${diaryPost.post}"></span>
-          <span th:text="${diaryPost.date}"></span>
+          <span class="date" th:text="${diaryPost.date}"></span>
         </div>
         <div class="dropdown">
           <button class="dropbtn">Dropdown</button>
