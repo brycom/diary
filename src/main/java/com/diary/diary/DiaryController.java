@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestBody;
 
 @Controller
 public class DiaryController {
@@ -37,7 +37,18 @@ public class DiaryController {
     @GetMapping("/delete-diary-post")
     public String deletePost(@RequestParam int id) {
         diaryRepository.deleteById(id);
-        System.out.println("deletePost" + id);
+
+        return "redirect:/";
+    }
+
+    @PostMapping("/edit-diary-post")
+    public String editPost(@RequestParam String addPostTital, @RequestParam String addPostText,
+            @RequestParam LocalDate AddPostDate) {
+
+        diaryRepository.setTital(addPostTital, 305);
+        diaryRepository.setPost(addPostText, 305);
+        diaryRepository.setDate(AddPostDate, 305);
+
         return "redirect:/";
     }
 

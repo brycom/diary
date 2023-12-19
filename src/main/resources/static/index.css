@@ -81,7 +81,13 @@ label {
   color: black;
   padding: 12px 16px;
   text-decoration: none;
+  text-align: center;
   display: block;
+}
+.editBtn {
+  border: none;
+  width: 100%;
+  background-color: #33333300;
 }
 .dropbtn {
   background-color: #4c6baf;
@@ -147,4 +153,19 @@ h1 {
   margin-top: 20px;
   margin-bottom: -25px;
   font-weight: 500;
+}
+.done-btn {
+  display: none;
+  position: absolute;
+  right: 35%;
+  width: 60px;
+  height: 25px;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  margin-top: 3px;
+}
+.done-btn a {
+  text-decoration: none;
+  color: black;
 }

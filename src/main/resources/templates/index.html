@@ -41,12 +41,13 @@
       </li>
       <li
         class="posts"
+        th:id="${diaryPost.id}"
         th:each="diaryPost : ${diaryPosts}"
         th:attr="data-date=${diaryPost.date}"
       >
-        <div class="content">
+        <div class="content" th:id="content +${diaryPost.id}">
           <span class="tital" th:text="${diaryPost.tital}"></span>
-          <span TH:text="${diaryPost.post}"></span>
+          <span class="post" TH:text="${diaryPost.post}"></span>
           <span class="date" th:text="${diaryPost.date}"></span>
         </div>
         <div class="dropdown">
@@ -57,9 +58,12 @@
               th:href="@{/delete-diary-post(id=${diaryPost.id})}"
               >Ta bort</a
             >
-            <a href="" class="drop-down-item editBtn" th:id="${diaryPost.id}">
-              Ändra</a
+            <button
+              class="drop-down-item editBtn"
+              th:id="'edit-btn ' + ${diaryPost.id}"
             >
+              Ändra
+            </button>
           </div>
         </div>
       </li>
