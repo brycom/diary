@@ -5,6 +5,7 @@ let editBtns = document.getElementsByClassName("editBtn");
 let startDate = document.getElementById("start-date");
 let endDate = document.getElementById("end-date");
 let today = new Date();
+today.setHours(23, 59, 59, 0);
 let inUse = false;
 
 function checkPostDate() {
@@ -46,14 +47,16 @@ function editPost(id) {
       let tital = posts[i].getElementsByClassName("tital")[0];
       let date = posts[i].getElementsByClassName("date")[0];
       let post = posts[i].getElementsByClassName("post")[0];
+
       let contentContainer = posts[i].getElementsByClassName("content")[0];
       contentContainer.appendChild(newPost);
       newPost.setAttribute("action", "edit-diary-post");
-      newPost.setAttribute("th:id", id);
+
       let inputTital = document.getElementById("add-post-tital");
       inputTital.value = tital.innerText;
       tital.parentNode.removeChild(tital);
       let inputPost = document.getElementById("add-post-text");
+      document.getElementById("post-date").defaultValue = date.innerHTML;
 
       inputPost.value = post.innerText;
 
@@ -63,11 +66,9 @@ function editPost(id) {
       let ta = newPost.getElementsByTagName("textarea")[0];
       ta.style.width = "100%";
 
-      let doneBtn = posts[i].getElementsByClassName("done-btn")[0];
-      doneBtn.style.display = "block";
-      doneBtn.addEventListener("click", () => {
-        inUse = false;
-      });
+      let formId = posts[i].getElementsByClassName("form-id")[0];
+      formId.value = id;
+      console.log(formId.value);
     }
   }
 }
@@ -83,7 +84,6 @@ for (let i = 0; i < editBtns.length; i++) {
   editBtn.addEventListener("click", () => {
     let sliceEditBtn = "edit-btn ";
     let id = editBtn.id.replace(sliceEditBtn, "");
-    console.log(id);
     editPost(id);
   });
 }
@@ -98,12 +98,8 @@ startDate.addEventListener("change", () => {
     date.setHours(23, 59, 59, 0);
     if (date != null) {
       if (date <= new Date(startDate.value)) {
-        console.log("Ny datumvärde: " + new Date(startDate.value));
-        console.log(date);
         post.style.display = "none";
-      } else if (date >= new Date(endDate.value)) {
-        console.log("här är vi nu i else ifen");
-        console.log(endDate.value);
+      } else if (date >= new Date(endDate.value) || date >= today) {
       } else {
         post.style.display = "block";
       }
@@ -117,16 +113,12 @@ endDate.addEventListener("change", () => {
     let date = new Date(dateStr);
     date.setHours(0, 0, 0, 0);
     if (date != null) {
-      if (date >= new Date(endDate.value)) {
-        console.log("Ny datumvärde: " + new Date(endDate.value));
-        console.log(date);
+      if (date >= new Date(endDate.value) || date >= today) {
         post.style.display = "none";
       } else if (date <= new Date(startDate.value)) {
-        console.log("snälla säg att det fungerar");
       } else {
         post.style.display = "block";
       }
     }
   }
-  console.log("Ny datumvärde: " + endDate.value);
 });

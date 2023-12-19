@@ -42,12 +42,11 @@ public class DiaryController {
     }
 
     @PostMapping("/edit-diary-post")
-    public String editPost(@RequestParam String addPostTital, @RequestParam String addPostText,
+    public String editPost(@RequestParam int id, @RequestParam String addPostTital, @RequestParam String addPostText,
             @RequestParam LocalDate AddPostDate) {
-
-        diaryRepository.setTital(addPostTital, 305);
-        diaryRepository.setPost(addPostText, 305);
-        diaryRepository.setDate(AddPostDate, 305);
+        diaryRepository.setTital(addPostTital, id);
+        diaryRepository.setPost(addPostText, id);
+        diaryRepository.setDate(AddPostDate, id);
 
         return "redirect:/";
     }
