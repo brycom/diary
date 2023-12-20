@@ -1,7 +1,7 @@
 package com.diary.diary;
 
-import java.sql.Date;
 import java.time.LocalDate;
+import java.util.List;
 
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -11,7 +11,8 @@ import jakarta.transaction.Transactional;
 
 public interface DiaryRepository extends CrudRepository<Diary, Integer> {
 
-    // @Query("SELECT d FROM Diary d WHERE d.id =")
+    @Query("SELECT d FROM Diary d WHERE d.date <=?1 ORDER BY d.date DESC")
+    List<Diary> activePosts(LocalDate date);
 
     @Transactional
     @Modifying

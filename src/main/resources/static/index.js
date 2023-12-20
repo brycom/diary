@@ -8,18 +8,6 @@ let today = new Date();
 today.setHours(23, 59, 59, 0);
 let inUse = false;
 
-function checkPostDate() {
-  for (let i = 0; i < posts.length; i++) {
-    let post = posts[i];
-    let dateStr = post.getAttribute("data-date");
-    let date = new Date(dateStr);
-    if (date != null) {
-      if (date >= today) {
-        post.style.display = "none";
-      }
-    }
-  }
-}
 function showByStartDate(dateIn) {
   for (let i = 0; i < posts.length; i++) {
     let post = posts[i];
@@ -87,8 +75,6 @@ for (let i = 0; i < editBtns.length; i++) {
     editPost(id);
   });
 }
-
-checkPostDate();
 
 startDate.addEventListener("change", () => {
   for (let i = 0; i < posts.length; i++) {

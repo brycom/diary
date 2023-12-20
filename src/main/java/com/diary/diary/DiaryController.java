@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -18,7 +17,8 @@ public class DiaryController {
 
     @GetMapping
     public String diery(Model model) {
-        model.addAttribute("diaryPosts", diaryRepository.findAll());
+        LocalDate today = LocalDate.now();
+        model.addAttribute("diaryPosts", diaryRepository.activePosts(today));
         return "index";
     }
 
