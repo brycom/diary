@@ -5,32 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="index.js" defer></script>
     <link rel="stylesheet" href="/index.css" />
-    <title>diary</title>
+    <title>Diary</title>
   </head>
   <body>
-    <h1>Diary</h1>
-    <button id="new-form-btn">skapa inlägg</button>
-    <form
-      method="post"
-      th:action="@{/new-post}"
-      th:objekt="${Diary}"
-      th:id="newPost"
-    >
-      <label for="add-post-tital">tital: </label>
-      <input type="text" id="add-post-tital" name="addPostTital" />
-      <label for="add-post-text">inlägg: </label>
-      <textarea
-        name="addPostText"
-        id="add-post-text"
-        cols="79"
-        rows="10"
-      ></textarea>
+    <div id="top">
+      <img id="logo" src="/Diary-logo.jpg" alt="här borde det vara en bild" />
+    </div>
+    <div id="test"></div>
+    <div id="new-post-div">
+      <button id="new-form-btn">skapa inlägg</button>
+      <form
+        method="post"
+        th:action="@{/new-post}"
+        th:objekt="${Diary}"
+        th:id="newPost"
+      >
+        <label for="add-post-tital">tital: </label>
+        <input type="text" id="add-post-tital" name="addPostTital" />
+        <label for="add-post-text">inlägg: </label>
+        <textarea
+          name="addPostText"
+          id="add-post-text"
+          cols="79"
+          rows="10"
+        ></textarea>
 
-      <label for="post-date">publiceringsdatum: </label>
-      <input type="date" id="post-date" name="AddPostDate" required />
-      <input class="form-id" type="hidden" name="id" value="123" />
-      <button>Submit</button>
-    </form>
+        <label for="post-date">publiceringsdatum: </label>
+        <input type="date" id="post-date" name="AddPostDate" required />
+        <input class="form-id" type="hidden" name="id" value="123" />
+        <button>Submit</button>
+      </form>
+    </div>
     <ul>
       <li>
         <form id="date-search">

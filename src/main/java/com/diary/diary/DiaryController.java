@@ -47,6 +47,7 @@ public class DiaryController {
         diaryRepository.setTital(addPostTital, id);
         diaryRepository.setPost(addPostText, id);
         diaryRepository.setDate(AddPostDate, id);
+        System.out.println("test");
 
         return "redirect:/";
     }

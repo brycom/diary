@@ -1,31 +1,46 @@
 let posts = document.getElementsByClassName("posts");
 let newPostBtn = document.getElementById("new-form-btn");
 let newPost = document.getElementById("newPost");
+let newPostdiv = document.getElementById("new-post-div");
 let editBtns = document.getElementsByClassName("editBtn");
 let startDate = document.getElementById("start-date");
 let endDate = document.getElementById("end-date");
+
 let today = new Date();
 today.setHours(23, 59, 59, 0);
+
 let inUse = false;
 
-function showByStartDate(dateIn) {
-  for (let i = 0; i < posts.length; i++) {
-    let post = posts[i];
-    let dateStr = post.getAttribute("data-date");
-    let date = new Date(dateStr);
-    if (date != null) {
-      if (date >= today) {
-        post.style.display = "none";
-      }
-    }
-  }
-}
 function showNewPost() {
   if (newPost.style.display == "block") {
     newPost.style.display = "none";
+    inUse = false;
   } else {
+    newPostdiv.appendChild(newPost);
+    document.getElementById("add-post-tital").value = "";
+    document.getElementById("add-post-text").value = "";
+    document.getElementById("post-date").defaultValue = today
+      .toISOString()
+      .split("T")[0];
+
     newPost.style.display = "block";
+    inUse = true;
   }
+}
+function closeBtn(tital, date, post, contanier) {
+  let closeBtn = document.createElement("button");
+  closeBtn.innerText = "stäng";
+  closeBtn.setAttribute("class", "dropbtn");
+  closeBtn.style.float = "right";
+  contanier.appendChild(closeBtn);
+  closeBtn.addEventListener("click", () => {
+    contanier.innerHTML = "";
+    contanier.appendChild(tital);
+    contanier.appendChild(post);
+    contanier.appendChild(date);
+    inUse = false;
+    newPost.style.display = "none";
+  });
 }
 
 function editPost(id) {
@@ -57,13 +72,14 @@ function editPost(id) {
       let formId = posts[i].getElementsByClassName("form-id")[0];
       formId.value = id;
       console.log(formId.value);
+      contentContainer.appendChild;
+
+      contentContainer.appendChild(
+        closeBtn(tital, date, post, contentContainer)
+      );
     }
   }
 }
-
-document.getElementById("post-date").defaultValue = today
-  .toISOString()
-  .split("T")[0];
 
 newPostBtn.addEventListener("click", showNewPost);
 
