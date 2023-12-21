@@ -17,6 +17,7 @@ function showNewPost() {
     inUse = false;
   } else {
     newPostdiv.appendChild(newPost);
+    newPost.setAttribute("action", "/new-post");
     document.getElementById("add-post-tital").value = "";
     document.getElementById("add-post-text").value = "";
     document.getElementById("post-date").defaultValue = today
@@ -101,7 +102,7 @@ startDate.addEventListener("change", () => {
     if (date != null) {
       if (date <= new Date(startDate.value)) {
         post.style.display = "none";
-      } else if (date >= new Date(endDate.value) || date >= today) {
+      } else if (date >= new Date(endDate.value)) {
       } else {
         post.style.display = "block";
       }
@@ -115,7 +116,7 @@ endDate.addEventListener("change", () => {
     let date = new Date(dateStr);
     date.setHours(0, 0, 0, 0);
     if (date != null) {
-      if (date >= new Date(endDate.value) || date >= today) {
+      if (date >= new Date(endDate.value)) {
         post.style.display = "none";
       } else if (date <= new Date(startDate.value)) {
       } else {
